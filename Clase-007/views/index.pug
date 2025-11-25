@@ -1,0 +1,171 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet" href="/style.css")
+  body
+    .stars-background
+
+    header.navbar
+      .container-navbar
+        .logo
+          h1 🎵 E-Music Hub
+        nav.nav-menu
+          ul
+            li
+              a(href="#home") Inicio
+            li
+              a(href="#genres") Géneros
+            li
+              a(href="#artists") Artistas
+            li
+              a(href="#about") Acerca de
+
+    main
+      // Hero Section
+      section#home.hero
+        .hero-content
+          h1.main-title= title
+          p.subtitle= subtitle
+          button.btn-primary.pulse-btn Explorar
+
+      // Géneros Section
+      section#genres.genres
+        .container
+          h2 Géneros Electrónicos Populares
+          .genres-grid
+            .genre-card
+              .genre-icon 🎧
+              h3 House
+              p Ritmos hipnotizantes y bailable con bases graves profundas
+              .accent-line
+
+            .genre-card
+              .genre-icon 🎛️
+              h3 Techno
+              p Sonidos industriales y beats repetitivos minimalistas
+              .accent-line
+
+            .genre-card
+              .genre-icon 🚀
+              h3 Trance
+              h3 Trance
+              p Melodías épicas y transiciones emocionales poderosas
+              .accent-line
+
+            .genre-card
+              .genre-icon ⚡
+              h3 Drum & Bass
+              p Ritmos rápidos y bajos agresivos llenos de energía
+              .accent-line
+
+            .genre-card
+              .genre-icon 🌀
+              h3 Dubstep
+              p Wobbles de bajos y síntesis de sonidos futuristas
+              .accent-line
+
+            .genre-card
+              .genre-icon ✨
+              h3 Synthwave
+              p Sintetizadores retro con influencias de los 80s
+              .accent-line
+
+      // Artists Section
+      section#artists.artists
+        .container
+          h2 Artistas Destacados
+          .artists-grid
+            .artist-card
+              .artist-image 🎤
+              .artist-info
+                h3 Daft Punk
+                p Pioneros del house francés
+                .rating ★★★★★
+
+            .artist-card
+              .artist-image 🎹
+              .artist-info
+                h3 Deadmau5
+                h3 Deadmau5
+                p Productor de progressive house
+                .rating ★★★★★
+
+            .artist-card
+              .artist-image 🎚️
+              .artist-info
+                h3 Skrillex
+                p Creador del dubstep moderno
+                .rating ★★★★★
+
+            .artist-card
+              .artist-image 🔊
+              .artist-info
+                h3 Calvin Harris
+                p Maestro del electro-pop
+                .rating ★★★★★
+
+      // Events Section
+      section#about.events
+        .container
+          h2 Próximos Eventos
+          .events-list
+            .event-item
+              .event-date
+                span.day 15
+                span.month Dic
+              .event-content
+                h3 Festival Electrónico 2025
+                p Festival de 3 días con los mejores artistas
+                .event-tag Live
+
+            .event-item
+              .event-date
+                span.day 22
+                span.month Dic
+              .event-content
+                h3 Noche Techno Underground
+                p Sesión de techno puro en la ciudad
+                .event-tag DJ Set
+
+            .event-item
+              .event-date
+                span.day 02
+                span.month Ene
+              .event-content
+                h3 Trance Experience
+                h3 Trance Experience
+                p Viaje visual y sonoro del trance
+                .event-tag Virtual
+
+      // Newsletter Section
+      section.newsletter
+        .container
+          h2 Suscríbete a nuestro boletín
+          .newsletter-form
+            input(type="email" placeholder="Tu correo electrónico" id="emailInput")
+            button.btn-primary(type="button") Suscribirse
+
+      // Interactive Section
+      section.interactive
+        .container
+          h2 Generador de Visualización
+          .visualizer-container
+            canvas#visualizer
+            .controls
+              button.btn-small#startBtn Iniciar
+              button.btn-small#stopBtn Detener
+              .tempo-control
+                label Tempo (BPM):
+                input(type="range" id="tempoSlider" min="80" max="180" value="120")
+                span#tempoValue 120
+
+    footer.footer
+      .container
+        p © 2025 Electronic Music Hub. Todos los derechos reservados.
+        p Hecho con ❤️ por amantes de la música electrónica
+
+    script(src="/script.js")
+

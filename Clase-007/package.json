@@ -1,0 +1,27 @@
+{
+  "name": "electronic-music-hub",
+  "version": "1.0.0",
+  "description": "Una página web temática de música electrónica interactiva",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "music",
+    "electronic",
+    "web",
+    "pug",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+
