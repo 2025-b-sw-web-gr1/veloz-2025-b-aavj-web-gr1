@@ -871,6 +871,13 @@ body {
     animation-delay: calc(0.1s * var(--card-index, 0));
 }
 
+/* Fix: Declarar --card-index por defecto en los hijos de los grids principales */
+.features-grid > *,
+.tech-grid > *,
+.testimonials-grid > * {
+    --card-index: 0;
+}
+
 /* ============================================
    TEMAS DE CONTRASTE ALTO (WCAG AAA)
    ============================================ */
@@ -929,4 +936,3 @@ body {
         scroll-behavior: auto;
     }
 }
-
