@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indie Games Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVEGACIÓN Y ENCABEZADO -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🎮</span>
+                <h1>Indie Games Hub</h1>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" data-section="games">Juegos</button>
+                <button class="nav-btn" data-section="create">+ Nuevo Juego</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="main-container">
+        <!-- SECCIÓN DE JUEGOS (Listado) -->
+        <section id="games-section" class="section active">
+            <div class="section-header">
+                <h2>Descubre Videojuegos Indie Increíbles</h2>
+                <p>Explora una colección curada de los mejores juegos independientes</p>
+                <div class="controls">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="🔍 Buscar por título o género..."
+                        class="search-input"
+                    >
+                    <select id="sort-select" class="sort-select">
+                        <option value="newest">Más Recientes</option>
+                        <option value="oldest">Más Antiguos</option>
+                        <option value="highest-rated">Mayor Calificación</option>
+                        <option value="lowest-rated">Menor Calificación</option>
+                        <option value="a-z">A - Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="games-container" class="games-grid">
+                <!-- Las tarjetas de juegos se insertarán aquí dinámicamente -->
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Cargando videojuegos...</p>
+            </div>
+
+            <div id="no-results" class="no-results hidden">
+                <p>No se encontraron videojuegos que coincidan con tu búsqueda.</p>
+            </div>
+
+            <div id="error-message" class="error-message hidden"></div>
+        </section>
+
+        <!-- SECCIÓN DE CREAR JUEGO -->
+        <section id="create-section" class="section">
+            <div class="section-header">
+                <h2>Agregar Nuevo Videojuego</h2>
+                <p>Completa el formulario para crear un nuevo juego en la colección</p>
+            </div>
+
+            <form id="create-form" class="game-form">
+                <div class="form-group">
+                    <label for="title">Título del Juego *</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="ej: Proyecto Especial"
+                        required
+                    >
+                    <span class="error-text" id="title-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descripción *</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Describe la trama, mecánicas y atmósfera del juego..."
+                        rows="4"
+                        required
+                    ></textarea>
+                    <span class="error-text" id="description-error"></span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="genre">Género *</label>
+                        <input
+                            type="text"
+                            id="genre"
+                            name="genre"
+                            placeholder="ej: RPG, Aventura, Plataforma"
+                            required
+                        >
+                        <span class="error-text" id="genre-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="developer">Desarrollador *</label>
+                        <input
+                            type="text"
+                            id="developer"
+                            name="developer"
+                            placeholder="ej: Studio Independiente"
+                            required
+                        >
+                        <span class="error-text" id="developer-error"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="release_year">Año de Lanzamiento *</label>
+                        <input
+                            type="number"
+                            id="release_year"
+                            name="release_year"
+                            placeholder="ej: 2024"
+                            min="2000"
+                            required
+                        >
+                        <span class="error-text" id="release_year-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating">Calificación (0-10) *</label>
+                        <input
+                            type="number"
+                            id="rating"
+                            name="rating"
+                            placeholder="ej: 8.5"
+                            min="0"
+                            max="10"
+                            step="0.1"
+                            required
+                        >
+                        <span class="error-text" id="rating-error"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Crear Videojuego</button>
+                <div id="create-feedback" class="feedback hidden"></div>
+            </form>
+        </section>
+    </main>
+
+    <!-- MODAL DE EDICIÓN -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Videojuego</h2>
+                <button type="button" class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <form id="edit-form" class="game-form">
+                <input type="hidden" id="edit-id">
+
+                <div class="form-group">
+                    <label for="edit-title">Título del Juego *</label>
+                    <input type="text" id="edit-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-description">Descripción *</label>
+                    <textarea id="edit-description" rows="4" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-genre">Género *</label>
+                        <input type="text" id="edit-genre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-developer">Desarrollador *</label>
+                        <input type="text" id="edit-developer" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-release_year">Año de Lanzamiento *</label>
+                        <input type="number" id="edit-release_year" min="2000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-rating">Calificación (0-10) *</label>
+                        <input type="number" id="edit-rating" min="0" max="10" step="0.1" required>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-primary">Guardar Cambios</button>
+                    <button type="button" class="btn-secondary" id="cancel-edit">Cancelar</button>
+                </div>
+                <div id="edit-feedback" class="feedback hidden"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMACIÓN DE ELIMINACIÓN -->
+    <div id="delete-modal" class="modal hidden">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2>Confirmar Eliminación</h2>
+            </div>
+            <p id="delete-message"></p>
+            <div class="modal-buttons">
+                <button type="button" class="btn-danger" id="confirm-delete">Eliminar</button>
+                <button type="button" class="btn-secondary" id="cancel-delete">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
