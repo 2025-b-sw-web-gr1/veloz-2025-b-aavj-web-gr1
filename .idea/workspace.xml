@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1a667b54-40a8-488b-8e54-cbcf09718120" name="Changes" comment="archivos de entorno node de clase 007" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AlejandroV33&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/2025-b-sw-web-gr1/veloz-2025-b-aavj-web-gr1.git&quot;,
+    &quot;accountId&quot;: &quot;7e76513e-3058-445a-9727-47c869a3d3c8&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="AISelfReview" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="33UUcDqS6qrffHdvJ2m6pMKDsov" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/famil/WebstormProjects/veloz-2025-b-aavj-web-gr1&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\famil\WebstormProjects\veloz-2025-b-aavj-web-gr1\Clase-008-009\Pagina web" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" engineId="37cae5b9-e8b2-4949-9172-aafa37fbc09c" uri="http://localhost:63342/veloz-2025-b-aavj-web-gr1/Clase-006/Parte3/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-WS-252.28539.21" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a667b54-40a8-488b-8e54-cbcf09718120" name="Changes" comment="" />
+      <created>1759371222069</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1759371222069</updated>
+      <workItem from="1759371223537" duration="1132000" />
+      <workItem from="1763938716931" duration="980000" />
+      <workItem from="1764026356925" duration="2080000" />
+      <workItem from="1764028512774" duration="82000" />
+      <workItem from="1764028811667" duration="2152000" />
+      <workItem from="1764033183740" duration="5000" />
+      <workItem from="1764108342842" duration="726000" />
+      <workItem from="1764109109699" duration="2972000" />
+      <workItem from="1765338855985" duration="267000" />
+      <workItem from="1765638392963" duration="931000" />
+      <workItem from="1765645858581" duration="3425000" />
+      <workItem from="1765669028432" duration="11222000" />
+    </task>
+    <task id="LOCAL-00001" summary="deber Clase 006">
+      <option name="closed" value="true" />
+      <created>1764029186051</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1764029186052</updated>
+    </task>
+    <task id="LOCAL-00002" summary="deber Clase 006 arreglo css">
+      <option name="closed" value="true" />
+      <created>1764029565964</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1764029565964</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Clase 007">
+      <option name="closed" value="true" />
+      <created>1764112980411</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1764112980411</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Clase 008-009">
+      <option name="closed" value="true" />
+      <created>1765648112177</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765648112177</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Clase 008-009 corregido">
+      <option name="closed" value="true" />
+      <created>1765682978451</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1765682978451</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Examen 01">
+      <option name="closed" value="true" />
+      <created>1765687324516</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765687324516</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Corrección de archivos de entorno">
+      <option name="closed" value="true" />
+      <created>1765688273818</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765688273818</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Corrección de archivos de entorno">
+      <option name="closed" value="true" />
+      <created>1765689377333</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1765689377333</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Poryecto 01">
+      <option name="closed" value="true" />
+      <created>1765690596672</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1765690596672</updated>
+    </task>
+    <task id="LOCAL-00010" summary="archivos de entorno node de clase 007">
+      <option name="closed" value="true" />
+      <created>1765690675014</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1765690675014</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="deber Clase 006" />
+    <MESSAGE value="deber Clase 006 arreglo css" />
+    <MESSAGE value="Clase 007" />
+    <MESSAGE value="Clase 008-009" />
+    <MESSAGE value="Clase 008-009 corregido" />
+    <MESSAGE value="Examen 01" />
+    <MESSAGE value="Corrección de archivos de entorno" />
+    <MESSAGE value="Poryecto 01" />
+    <MESSAGE value="archivos de entorno node de clase 007" />
+    <option name="LAST_COMMIT_MESSAGE" value="archivos de entorno node de clase 007" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>
