@@ -1,0 +1,25 @@
+﻿meta {
+  name: Actualizar biblioteca completa
+  type: http
+  seq: 4
+}
+
+put {
+  url: https://api.library-system.com/libraries/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "id": 1,
+    "name": "Biblioteca Nacional de Quito - Actualizada",
+    "address": "Av. 12 de Octubre y Patria",
+    "city": "Quito",
+    "capacity": 60000
+  }
+}

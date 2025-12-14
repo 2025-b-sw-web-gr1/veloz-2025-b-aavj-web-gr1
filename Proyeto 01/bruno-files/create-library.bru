@@ -1,0 +1,24 @@
+﻿meta {
+  name: Crear nueva biblioteca
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://api.library-system.com/libraries
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "Biblioteca Nacional de Quito",
+    "address": "Av. 12 de Octubre y Patria",
+    "city": "Quito",
+    "capacity": 50000
+  }
+}

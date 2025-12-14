@@ -1,0 +1,26 @@
+﻿meta {
+  name: Crear nuevo libro
+  type: http
+  seq: 9
+}
+
+post {
+  url: https://api.library-system.com/books
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "Cien Años de Soledad",
+    "author": "Gabriel García Márquez",
+    "isbn": "978-0307474728",
+    "publishYear": 1967,
+    "genre": "Realismo Mágico",
+    "libraryId": 1
+  }
+}

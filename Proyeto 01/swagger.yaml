@@ -1,0 +1,680 @@
+openapi: 3.0.0
+info:
+  title: API de Bibliotecas y Libros
+  description: |
+    API RESTful para gestionar bibliotecas y sus colecciones de libros.
+    
+    **Relación de datos:**
+    - Una biblioteca puede tener múltiples libros
+    - Cada libro pertenece a una única biblioteca
+    
+    **Funcionalidades principales:**
+    - CRUD completo de bibliotecas
+    - CRUD completo de libros
+    - Consulta de libros por biblioteca
+    - Búsqueda de libros por autor y género
+  version: 1.0.0
+  contact:
+    name: Sistema de Bibliotecas
+    email: admin@library-system.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.library-system.com
+    description: Servidor de producción
+  - url: https://api-dev.library-system.com
+    description: Servidor de desarrollo
+
+tags:
+  - name: Libraries
+    description: Operaciones relacionadas con bibliotecas
+  - name: Books
+    description: Operaciones relacionadas con libros
+
+paths:
+  # ============ LIBRARIES (BIBLIOTECAS) ============
+  /libraries:
+    get:
+      tags:
+        - Libraries
+      summary: Obtener todas las bibliotecas
+      description: Retorna una lista completa de todas las bibliotecas registradas en el sistema
+      responses:
+        '200':
+          description: Lista de bibliotecas obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Library'
+              example:
+                - id: 1
+                  name: "Biblioteca Nacional de Quito"
+                  address: "Av. 12 de Octubre y Patria"
+                  city: "Quito"
+                  capacity: 50000
+                - id: 2
+                  name: "Biblioteca Municipal de Guayaquil"
+                  address: "Malecón 2000"
+                  city: "Guayaquil"
+                  capacity: 30000
+    
+    post:
+      tags:
+        - Libraries
+      summary: Crear nueva biblioteca
+      description: Registra una nueva biblioteca en el sistema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryInput'
+            example:
+              name: "Biblioteca Nacional de Quito"
+              address: "Av. 12 de Octubre y Patria"
+              city: "Quito"
+              capacity: 50000
+      responses:
+        '201':
+          description: Biblioteca creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Library'
+              example:
+                id: 1
+                name: "Biblioteca Nacional de Quito"
+                address: "Av. 12 de Octubre y Patria"
+                city: "Quito"
+                capacity: 50000
+        '400':
+          description: Datos de entrada inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /libraries/{id}:
+    get:
+      tags:
+        - Libraries
+      summary: Obtener biblioteca por ID
+      description: Retorna los detalles de una biblioteca específica
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID único de la biblioteca
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Biblioteca encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Library'
+        '404':
+          description: Biblioteca no encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    put:
+      tags:
+        - Libraries
+      summary: Actualizar biblioteca completa
+      description: Actualiza todos los campos de una biblioteca existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la biblioteca a actualizar
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibraryUpdate'
+            example:
+              id: 1
+              name: "Biblioteca Nacional de Quito - Actualizada"
+              address: "Av. 12 de Octubre y Patria"
+              city: "Quito"
+              capacity: 60000
+      responses:
+        '200':
+          description: Biblioteca actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Library'
+        '404':
+          description: Biblioteca no encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    delete:
+      tags:
+        - Libraries
+      summary: Eliminar biblioteca
+      description: Elimina una biblioteca del sistema (solo si no tiene libros asociados)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la biblioteca a eliminar
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: Biblioteca eliminada exitosamente
+        '404':
+          description: Biblioteca no encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Conflicto - La biblioteca tiene libros asociados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /libraries/{id}/books:
+    get:
+      tags:
+        - Libraries
+        - Books
+      summary: Obtener todos los libros de una biblioteca
+      description: Retorna la colección completa de libros de una biblioteca específica
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la biblioteca
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Lista de libros de la biblioteca
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+              example:
+                - id: 1
+                  title: "Cien Años de Soledad"
+                  author: "Gabriel García Márquez"
+                  isbn: "978-0307474728"
+                  publishYear: 1967
+                  genre: "Realismo Mágico"
+                  libraryId: 1
+                - id: 2
+                  title: "El Amor en los Tiempos del Cólera"
+                  author: "Gabriel García Márquez"
+                  isbn: "978-0307387387"
+                  publishYear: 1985
+                  genre: "Romance"
+                  libraryId: 1
+        '404':
+          description: Biblioteca no encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  # ============ BOOKS (LIBROS) ============
+  /books:
+    get:
+      tags:
+        - Books
+      summary: Obtener todos los libros
+      description: Retorna la lista completa de libros en el sistema. Permite filtrar por autor y género.
+      parameters:
+        - name: author
+          in: query
+          description: Filtrar por nombre de autor
+          schema:
+            type: string
+            example: "Gabriel García Márquez"
+        - name: genre
+          in: query
+          description: Filtrar por género literario
+          schema:
+            type: string
+            example: "Realismo Mágico"
+        - name: libraryId
+          in: query
+          description: Filtrar por ID de biblioteca
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Lista de libros obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    
+    post:
+      tags:
+        - Books
+      summary: Crear nuevo libro
+      description: Registra un nuevo libro y lo asocia a una biblioteca
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+            example:
+              title: "Cien Años de Soledad"
+              author: "Gabriel García Márquez"
+              isbn: "978-0307474728"
+              publishYear: 1967
+              genre: "Realismo Mágico"
+              libraryId: 1
+      responses:
+        '201':
+          description: Libro creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '400':
+          description: Datos de entrada inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Biblioteca no encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /books/{id}:
+    get:
+      tags:
+        - Books
+      summary: Obtener libro por ID
+      description: Retorna los detalles completos de un libro específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID único del libro
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Libro encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '404':
+          description: Libro no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    put:
+      tags:
+        - Books
+      summary: Actualizar libro completo
+      description: Actualiza todos los campos de un libro existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del libro a actualizar
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookUpdate'
+            example:
+              id: 1
+              title: "Cien Años de Soledad - Edición Especial"
+              author: "Gabriel García Márquez"
+              isbn: "978-0307474728"
+              publishYear: 1967
+              genre: "Realismo Mágico"
+              libraryId: 1
+      responses:
+        '200':
+          description: Libro actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '404':
+          description: Libro no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    patch:
+      tags:
+        - Books
+      summary: Actualizar libro parcialmente
+      description: Actualiza solo los campos especificados del libro
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del libro a actualizar
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                genre:
+                  type: string
+                libraryId:
+                  type: integer
+            example:
+              genre: "Ficción Literaria"
+      responses:
+        '200':
+          description: Libro actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '404':
+          description: Libro no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    delete:
+      tags:
+        - Books
+      summary: Eliminar libro
+      description: Elimina un libro del sistema
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del libro a eliminar
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: Libro eliminado exitosamente
+        '404':
+          description: Libro no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+# ============ SCHEMAS / MODELOS ============
+components:
+  schemas:
+    Library:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador único de la biblioteca
+          example: 1
+        name:
+          type: string
+          description: Nombre de la biblioteca
+          example: "Biblioteca Nacional de Quito"
+        address:
+          type: string
+          description: Dirección física
+          example: "Av. 12 de Octubre y Patria"
+        city:
+          type: string
+          description: Ciudad donde se ubica
+          example: "Quito"
+        capacity:
+          type: integer
+          description: Capacidad máxima de libros
+          example: 50000
+      required:
+        - id
+        - name
+        - address
+        - city
+        - capacity
+    
+    LibraryInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la biblioteca
+          example: "Biblioteca Nacional de Quito"
+        address:
+          type: string
+          description: Dirección física
+          example: "Av. 12 de Octubre y Patria"
+        city:
+          type: string
+          description: Ciudad donde se ubica
+          example: "Quito"
+        capacity:
+          type: integer
+          description: Capacidad máxima de libros
+          minimum: 1
+          example: 50000
+      required:
+        - name
+        - address
+        - city
+        - capacity
+    
+    LibraryUpdate:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID de la biblioteca
+          example: 1
+        name:
+          type: string
+          description: Nombre de la biblioteca
+          example: "Biblioteca Nacional de Quito"
+        address:
+          type: string
+          description: Dirección física
+          example: "Av. 12 de Octubre y Patria"
+        city:
+          type: string
+          description: Ciudad donde se ubica
+          example: "Quito"
+        capacity:
+          type: integer
+          description: Capacidad máxima de libros
+          example: 60000
+      required:
+        - id
+        - name
+        - address
+        - city
+        - capacity
+    
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador único del libro
+          example: 1
+        title:
+          type: string
+          description: Título del libro
+          example: "Cien Años de Soledad"
+        author:
+          type: string
+          description: Autor del libro
+          example: "Gabriel García Márquez"
+        isbn:
+          type: string
+          description: Código ISBN del libro
+          pattern: '^978-\d{10}$'
+          example: "978-0307474728"
+        publishYear:
+          type: integer
+          description: Año de publicación
+          minimum: 1000
+          maximum: 2100
+          example: 1967
+        genre:
+          type: string
+          description: Género literario
+          example: "Realismo Mágico"
+        libraryId:
+          type: integer
+          description: ID de la biblioteca a la que pertenece
+          example: 1
+      required:
+        - id
+        - title
+        - author
+        - isbn
+        - publishYear
+        - genre
+        - libraryId
+    
+    BookInput:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Título del libro
+          example: "Cien Años de Soledad"
+        author:
+          type: string
+          description: Autor del libro
+          example: "Gabriel García Márquez"
+        isbn:
+          type: string
+          description: Código ISBN del libro
+          pattern: '^978-\d{10}$'
+          example: "978-0307474728"
+        publishYear:
+          type: integer
+          description: Año de publicación
+          minimum: 1000
+          maximum: 2100
+          example: 1967
+        genre:
+          type: string
+          description: Género literario
+          example: "Realismo Mágico"
+        libraryId:
+          type: integer
+          description: ID de la biblioteca a la que pertenece
+          example: 1
+      required:
+        - title
+        - author
+        - isbn
+        - publishYear
+        - genre
+        - libraryId
+    
+    BookUpdate:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID del libro
+          example: 1
+        title:
+          type: string
+          description: Título del libro
+          example: "Cien Años de Soledad - Edición Especial"
+        author:
+          type: string
+          description: Autor del libro
+          example: "Gabriel García Márquez"
+        isbn:
+          type: string
+          description: Código ISBN del libro
+          example: "978-0307474728"
+        publishYear:
+          type: integer
+          description: Año de publicación
+          example: 1967
+        genre:
+          type: string
+          description: Género literario
+          example: "Realismo Mágico"
+        libraryId:
+          type: integer
+          description: ID de la biblioteca a la que pertenece
+          example: 1
+      required:
+        - id
+        - title
+        - author
+        - isbn
+        - publishYear
+        - genre
+        - libraryId
+    
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Código de error HTTP
+          example: 404
+        message:
+          type: string
+          description: Mensaje descriptivo del error
+          example: "Biblioteca no encontrada"
+        details:
+          type: string
+          description: Detalles adicionales del error
+          example: "No existe una biblioteca con ID 999"
+      required:
+        - code
+        - message

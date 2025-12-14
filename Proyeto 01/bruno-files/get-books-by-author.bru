@@ -1,0 +1,15 @@
+﻿meta {
+  name: Buscar libros por autor
+  type: http
+  seq: 13
+}
+
+get {
+  url: https://api.library-system.com/books?author=Gabriel García Márquez
+  body: none
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}

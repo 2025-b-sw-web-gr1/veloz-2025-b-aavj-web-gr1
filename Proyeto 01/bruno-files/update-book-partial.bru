@@ -1,0 +1,21 @@
+﻿meta {
+  name: Actualizar libro parcialmente
+  type: http
+  seq: 11
+}
+
+patch {
+  url: https://api.library-system.com/books/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "genre": "Ficción Literaria"
+  }
+}

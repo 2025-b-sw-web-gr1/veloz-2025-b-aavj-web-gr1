@@ -1,0 +1,27 @@
+﻿meta {
+  name: Actualizar libro completo
+  type: http
+  seq: 10
+}
+
+put {
+  url: https://api.library-system.com/books/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "id": 1,
+    "title": "Cien Años de Soledad - Edición Especial",
+    "author": "Gabriel García Márquez",
+    "isbn": "978-0307474728",
+    "publishYear": 1967,
+    "genre": "Realismo Mágico",
+    "libraryId": 1
+  }
+}
