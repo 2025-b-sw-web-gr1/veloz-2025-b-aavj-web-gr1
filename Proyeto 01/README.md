@@ -12,19 +12,6 @@ Este repositorio contiene ejercicios prácticos para comprender el funcionamient
 - **Swagger/OpenAPI 3.0** - Documentación de APIs
 - **JSONPlaceholder** - API REST fake para pruebas
 
-## 📁 Estructura del Proyecto
-
-```
-.
-├── Clase-008/                    # Colección de peticiones Bruno
-│   ├── get-all-posts.bru
-│   ├── create-post.bru
-│   ├── get-all-users.bru
-│   └── ...
-├── api-documentation.yaml        # Documentación Swagger/OpenAPI
-└── README.md
-```
-
 ## 🎯 Objetivos del Taller
 
 ### Parte 1: Testing con Bruno
@@ -126,11 +113,3 @@ Accept: application/json
 - [Bruno Documentation](https://docs.usebruno.com/) - Guía de Bruno
 - [OpenAPI Specification](https://swagger.io/specification/) - Estándar OpenAPI
 - [HTTP Status Codes](https://httpstatuses.com/) - Códigos de respuesta HTTP
-
-## 👨‍💻 Autor
-
-Desarrollado como parte del curso de Desarrollo Web
-
-## 📄 Licencia
-
-Este proyecto es de uso educativo.
