@@ -1,0 +1,310 @@
+openapi: 3.0.0
+info:
+  title: Sports Teams API
+  description: API RESTful para gestionar equipos de fútbol y sus jugadores
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Development server
+
+paths:
+  /teams:
+    get:
+      summary: Obtener todos los equipos
+      tags:
+        - Teams
+      responses:
+        '200':
+          description: Lista de equipos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+    post:
+      summary: Crear un nuevo equipo
+      tags:
+        - Teams
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTeamDTO'
+      responses:
+        '201':
+          description: Equipo creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+
+  /teams/{id}:
+    get:
+      summary: Obtener un equipo por ID
+      tags:
+        - Teams
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Equipo encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '404':
+          description: Equipo no encontrado
+    put:
+      summary: Actualizar un equipo
+      tags:
+        - Teams
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamDTO'
+      responses:
+        '200':
+          description: Equipo actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '404':
+          description: Equipo no encontrado
+    delete:
+      summary: Eliminar un equipo
+      tags:
+        - Teams
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Equipo eliminado exitosamente
+        '404':
+          description: Equipo no encontrado
+
+  /teams/{id}/players:
+    get:
+      summary: Obtener jugadores de un equipo específico
+      tags:
+        - Teams
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Jugadores del equipo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  players:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Player'
+
+  /players:
+    get:
+      summary: Obtener todos los jugadores
+      tags:
+        - Players
+      responses:
+        '200':
+          description: Lista de jugadores
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+    post:
+      summary: Crear un nuevo jugador
+      tags:
+        - Players
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlayerDTO'
+      responses:
+        '201':
+          description: Jugador creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+
+  /players/{id}:
+    get:
+      summary: Obtener un jugador por ID
+      tags:
+        - Players
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Jugador encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        '404':
+          description: Jugador no encontrado
+    put:
+      summary: Actualizar un jugador
+      tags:
+        - Players
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlayerDTO'
+      responses:
+        '200':
+          description: Jugador actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        '404':
+          description: Jugador no encontrado
+    delete:
+      summary: Eliminar un jugador
+      tags:
+        - Players
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Jugador eliminado exitosamente
+        '404':
+          description: Jugador no encontrado
+
+components:
+  schemas:
+    Team:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID único del equipo
+        name:
+          type: string
+          description: Nombre del equipo
+        country:
+          type: string
+          description: País del equipo
+        players:
+          type: array
+          items:
+            $ref: '#/components/schemas/Player'
+          description: Lista de jugadores del equipo
+
+    Player:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID único del jugador
+        name:
+          type: string
+          description: Nombre del jugador
+        position:
+          type: string
+          description: Posición del jugador (Forward, Midfielder, Defender, Goalkeeper)
+        teamId:
+          type: integer
+          description: ID del equipo al que pertenece
+        team:
+          $ref: '#/components/schemas/Team'
+
+    CreateTeamDTO:
+      type: object
+      required:
+        - name
+        - country
+      properties:
+        name:
+          type: string
+          description: Nombre del equipo
+        country:
+          type: string
+          description: País del equipo
+
+    UpdateTeamDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del equipo
+        country:
+          type: string
+          description: País del equipo
+
+    CreatePlayerDTO:
+      type: object
+      required:
+        - name
+        - position
+        - teamId
+      properties:
+        name:
+          type: string
+          description: Nombre del jugador
+        position:
+          type: string
+          description: Posición del jugador
+        teamId:
+          type: integer
+          description: ID del equipo
+
+    UpdatePlayerDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del jugador
+        position:
+          type: string
+          description: Posición del jugador
+        teamId:
+          type: integer
+          description: ID del equipo
