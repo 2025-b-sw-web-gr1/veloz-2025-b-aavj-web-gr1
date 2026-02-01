@@ -175,4 +175,3 @@ npm run lint          # Ejecutar linter
 
 **Proyecto completado y listo para evaluación** ✅
 
-Fecha: 31 de Enero, 2026
